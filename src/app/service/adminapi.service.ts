@@ -16,7 +16,7 @@ export class AdminapiService {
   }
 
 
-  server_url = "http://localhost:3000"
+  server_url = "https://hospital-care-server.onrender.com/patient"
   constructor(private http: HttpClient) { }
 
   authorization() {
