@@ -1,0 +1,41 @@
+<div class="container-fluid shadow">
+    <div class="row m-2 ">
+        <div class="col-md-6">
+            <div class="d-flex align-items-center justify-content-center w-100 ">
+                <img src="https://th.bing.com/th/id/OIP.BNeTFQ5c3sHpmGPHDbdWyQHaHa?w=626&h=626&rs=1&pid=ImgDetMain"
+                    class="img-fluid shadow" width="100%" height="100%">
+
+            </div>
+        </div>
+        <div class=" col-md-6 mt-5">
+            <div class="d-flex align-items-center justify-content-center w-100 mt-5">
+                <form (ngSubmit)="login()" #loginForm="ngForm"
+                    class="shadow rounded w-100 p-3 shadow-lg d-flex align-items-center justify-content-center flex-column"
+                    style=" background-image:  linear-gradient(to right,whitesmoke , white);">
+
+
+                    <p class="text-primary text-center fs-2 p-3">Login Form</p>
+
+                    <div class="mb-3 w-100 p-2">
+                        <input type="email" class="form-control" placeholder="Email" required email [(ngModel)]="email"
+                            name="email" #emailloged="ngModel">
+
+                        <span *ngIf="emailloged.invalid && emailloged.touched" class="text-danger">Invalid Email</span>
+                    </div>
+
+                    <div class=" mb-3 w-100 p-2">
+                        <input type="password" class="form-control" placeholder="Password" required
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}" [(ngModel)]="password" name="password"
+                            #paaswordloged="ngModel">
+                        <span *ngIf="paaswordloged.invalid  && paaswordloged.touched" class="text-danger">Invalid
+                            Password</span>
+                    </div>
+                    <div class=" w-100 p-2 mb-3">
+                        <button [disabled]="loginForm.disabled" class="btn btn-primary">Submit</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

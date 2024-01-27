@@ -1,0 +1,116 @@
+<div class="d-flex w-100" >
+    <div *ngIf="showsidebar" class="sidebar bg-body-tertiary d-flex flex-column align-items-center  shadow-lg "
+        style="height: 100vh;width:15rem;">
+
+        <div class=" p-4 shadow w-100  d-flex">
+            <img src="https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/06/medical-logo.jpg" alt="Logo"
+                width="20%" height="10%" class="img-fluid me-2">
+            <a routerLink="/dashboard" style="text-decoration: none;">
+                <p class="text-primary">Dashboard</p>
+            </a>
+        </div>
+
+        <div class=" p-4 shadow w-100  d-flex">
+            <img src="https://cdn-icons-png.flaticon.com/512/7373/7373292.png" alt="Logo" width="20%" height="10%"
+                class="img-fluid me-2">
+            <a routerLink="/patient-detail" style="text-decoration: none;">
+                <p class="text-primary">Patients</p>
+            </a>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-12 col-md-8">
+
+                <div class="bg-light mt-4 rounded d-flex align-items-center container" style="height: 23%;">
+                    <i class="fa-solid fa-bars fa-4x text-primary" (click)="menubar()"></i>
+                    <p class="text-primary fs-2 p-2"> Welcome {{adminName}}</p>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-12 col-md-6">
+                        <div class="d-flex align-items-center bg-light mt-4 rounded p-4 p-md-5 w-100"
+                            style="height: 75%;">
+                            <mat-card class="demo-inline-calendar-card">
+                                <mat-calendar [(selected)]="selected"></mat-calendar>
+                            </mat-card>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="d-flex align-items-center bg-light mt-4 rounded p-4 p-md-5 w-100"
+                            style="height: 75%;">
+                            <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
+                                style="width: 100%; height: 100%; display: block;"></highcharts-chart>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="d-flex align-items-center justify-content-center bg-light mt-4 rounded"
+                    style="height: 60%;">
+
+                    <div *ngIf="!updateProfiile" (click)="EditProfie()"
+                        class="d-flex align-items-center justify-content-center flex-column w-100">
+                        <img [src]="profileImage" class="img-fluid rounded-circle" alt="Img">
+                        <div class="d-flex align-items-center justify-content-center w-100">
+                            <p class="text-primary fs-3 p-3">Update Profile <i class="fa-solid fa-pen fs-2 text-primary"></i>
+                            </p>
+                        </div>
+                    </div>
+
+                    <form *ngIf="updateProfiile" class="d-flex align-items-center justify-content-center flex-column"
+                        (ngSubmit)="updateProfileDetails()">
+
+                        <div>
+                            <label for="imagesprofile">
+                                <img [src]="profileImage" class="img-fluid rounded-circle" alt="Img">
+                                <input id="imagesprofile" type="file" style="display:none" (change)="getFile($event)">
+                            </label>
+                        </div>
+
+                        <div class="mb-2 mb-md-2">
+                            <input type="text" class="form-control" placeholder="Name" required name="adminname"
+                                [(ngModel)]="adminDetails.name" #adminname="ngModel"
+                                pattern="(^[a-zA-Z][a-zA-Z\s]{0,20}[a-zA-Z]$)">
+                            <span *ngIf="adminname.invalid && adminname.touched" class="text-danger">Invalid Name</span>
+                        </div>
+                        <div class="mb-2 mb-md-2">
+                            <input type="password" class="form-control" placeholder="Password" required
+                                name="adminpassword" [(ngModel)]="adminDetails.password" #adminpassword="ngModel"
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}">
+                            <span *ngIf="adminpassword.invalid && adminDetails.touched" class="text-danger">Invalid
+                                Password</span>
+                        </div>
+
+                        <div class="w-100 mt-3 d-flex justify-content-between">
+                            <button class="btn btn-primary" type="submit">Update</button>
+                            <span class="btn btn-primary" (click)="CancelData()">cancel</span>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="col-12 mt-4">
+                    <div class="d-flex align-items-center bg-light rounded p-4 text-primary" style="height: 50%;">
+                        <p class="fs-3 p-2">Total Patients: {{allPatients}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>

@@ -1,0 +1,19 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <div class="navbar-brand d-flex align-items-center justify-content-center w-75">
+            <img src="https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/06/medical-logo.jpg" alt="Logo"
+                width="50" height="34" class="img-fluid me-2">
+            <p class="fs-3 text-primary p-2"> Hospital Care</p>
+
+            
+        </div>
+
+        <div *ngIf="logged" class="text-primary" (click)="LogedOut()">
+            <i class="fa-solid fa-power-off text-primary fa-2x"></i>
+        </div>
+    </div>
+
+   
+</nav>
+
+

@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif
+}
+
+::-webkit-scrollbar {
+    overflow: hidden;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
